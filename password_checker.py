@@ -49,3 +49,12 @@ def pool_size(charsets: dict) -> int:
 
     return n
 
+# Theoretical bits of entropy based on length & pool size
+
+def raw_entropy(password: str)-> float:
+    if not password:
+        return 0.0
+    n = pool_size(detect_character(password))
+    if n<=1:
+        return 0.0
+    return len(password * math.log2(n))
