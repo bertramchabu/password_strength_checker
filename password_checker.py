@@ -58,3 +58,15 @@ def raw_entropy(password: str)-> float:
     if n<=1:
         return 0.0
     return len(password * math.log2(n))
+
+
+# observed entropy based on actual character distribution
+def shannon_entropy(password: str) -> float:
+    if not password: 
+        return 0.0
+    counts = Counter(password)
+    length = len(password)
+    return -sum(
+        (c/length) * math.log2(c/length)
+        for c in counts.values()
+    )
