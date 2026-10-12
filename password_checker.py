@@ -38,6 +38,14 @@ def detect_character(password: str)-> dict:
     }
 
 
+# computer pool size function
+def pool_size(charsets: dict) -> int:
+    n = 0
+    if charsets['lower']: n+=LOWER
+    if charsets['upper']: n+=UPPER
+    if charsets['digit']: n+=DIGITS
+    if charsets['symbol']: n+=SYMBOLS
+    if charsets['space']: n+= SPACE
 
-
+    return n
 
