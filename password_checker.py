@@ -27,6 +27,15 @@ def load_common_passwords ():
     except  FileNotFoundError:
         return []
 
+# Return which character classes appear in the password
+def detect_character(password: str)-> dict:
+    return {
+        "lower": bool(re.search(r"[a-z]", password)),
+        "upper": bool(re.search(r"[A-Z]", password)),
+        "digit": bool(re.search(r"[0-9]", password)),
+        "symbol": bool(re.search(r"[A-Za-Z0-9]", password)),
+        "space": " " in password,
+    }
 
 
 
